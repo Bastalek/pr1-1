@@ -39,3 +39,32 @@ def lista_tam(directorio,tam):
 		if os.path.isfile(f1):
 			if os.path.getsize(f1)>t:
 				print fichero + '--->'+str(os.path.getsize(f1))
+
+
+def cat(fichero):
+	if not os.access(fichero,0):
+		print "Fichero no existe"
+		exit()
+	if not os.path.isfile(fichero):
+		print "No es un fichero"
+		exit()
+	f=open(fichero,'r')
+	contenido=f.read()
+	print contenido
+	f.close()
+
+
+def grep(fichero,texto):
+	if not os.access(fichero,0):
+                print "Fichero no existe"
+                exit()
+        if not os.path.isfile(fichero):
+                print "No es un fichero"
+                exit()
+	f=open(fichero,'r')
+	while True:
+		linea=f.readline()
+		if not linea:
+			break
+		if linea.count(texto)>0:
+			print linea[:-1]
