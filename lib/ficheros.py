@@ -68,3 +68,22 @@ def grep(fichero,texto):
 			break
 		if linea.count(texto)>0:
 			print linea[:-1]
+
+
+
+def cp(fichero1,fichero2):
+        if not os.access(fichero1,0):
+                print "Fichero no existe"
+                exit()
+        if not os.path.isfile(fichero1):
+                print "No es un fichero"
+                exit()
+	f1=open(fichero1,'r')
+	f2=open(fichero2,'w')
+	lineas=f1.readlines()
+	#f2.writelines(lineas)
+	for linea in lineas:
+		f2.write(linea)
+	f1.close()
+	f2.close()
+
